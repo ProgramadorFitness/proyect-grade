@@ -1,9 +1,10 @@
-import React from 'react';
+import DefaultLayout from '../layout/DefaultLayout'
 
 export const wallets = () => {
   return (
-    <div>wallets</div>
-  )
+    <DefaultLayout>
+    Wallets
+    </DefaultLayout>  )
 }
 
 export default wallets

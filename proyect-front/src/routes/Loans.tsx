@@ -1,8 +1,10 @@
-import React from 'react';
+import DefaultLayout from '../layout/DefaultLayout'
 
 const Loans = () => {
   return (
-    <div>Loans</div>
+    <DefaultLayout>
+    Loans
+    </DefaultLayout>
   )
 }
 

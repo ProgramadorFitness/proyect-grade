@@ -1,6 +1,7 @@
-import { Link } from "react-scroll";
+/*import { Link } from "react-scroll";*/
+import { Link } from "react-router-dom";
 import {FaTimes, FaBars} from "react-icons/fa";
-import Image from '../assets/icono.png';
+/*import Image from '../assets/icono.png';*/
 import { useState } from "react";
 
 
@@ -13,18 +14,22 @@ const Nav = () => {
     const  content = <>
         <div className="lg:hidden block absolute top-16 w-full left-0 rigth-0 bg-slate-300 transition">
             <ul className="text-center text-xl p-20"> 
-                    <li className="my-4 py-4 border-b bg-slate-300 hover:rounded">
-                        <Link spy={true} smooth={true} to ="/" >Home</Link>
-                    </li>                
-                    <li className="my-4 py-4 border-b bg-slate-300 hover:rounded">
-                        <Link spy={true} smooth={true} to ="/wallet">Wallets</Link>
-                    </li>
-                    <li className="my-4 py-4 border-b bg-slate-300 hover:rounded">
-                        <Link spy={true} smooth={true} to ="/loan" >Loans</Link>
-                    </li>                
-                    <li className="my-4 py-4 border-b bg-slate-300 hover:rounded">
-                        <Link spy={true} smooth={true} to ="/dashboard">Dashboard</Link>
-                    </li>
+
+                    <Link spy={true} smooth={true} to="/" > 
+                        <li className="my-4 py-4 border-b bg-slate-300 hover:rounded">Home</li>
+                    </Link>               
+                    <Link spy={true} smooth={true} to="/wallet" >
+                        <li className="my-4 py-4 border-b bg-slate-300 hover:rounded">Wallets</li>
+                    </Link>
+                    <Link spy={true} smooth={true} to="/loan" >
+                        <li className="my-4 py-4 border-b bg-slate-300 hover:rounded">Loans</li>
+                    </Link>                
+                    <Link spy={true} smooth={true} to="/dashboard" >
+                        <li className="my-4 py-4 border-b bg-slate-300 hover:rounded">Dashboard</li>
+                    </Link>
+                    <Link spy={true} smooth={true} to="/client" >
+                        <li className="my-4 py-4 border-b bg-slate-300 hover:rounded">Client</li>
+                    </Link>
             </ul>
         </div>
     </>
@@ -40,18 +45,21 @@ const Nav = () => {
             <div className="lg:flex md:flex lg: flex-1 items center justify-end font-normal hidden">
                 <div className="flex-10">
                 <ul className="flex gap-8 mr-16 text-[18px]">
-                    <li className="hover:text-fuchsia-600 transition bg-slate-300  hover:border-fuchsia-600 cursor-pointer">
-                        <Link spy={true} smooth={true} to ="/" >Home</Link>
-                    </li>                
-                    <li className="hover:text-fuchsia-600 transition bg-slate-300 hover:border-fuchsia-600 cursor-pointer">
-                        <Link spy={true} smooth={true} to ="/wallet">Wallets</Link>
-                    </li>
-                    <li className="hover:text-fuchsia-600 transition bg-slate-300  hover:border-fuchsia-600 cursor-pointer">
-                        <Link spy={true} smooth={true} to ="/loan" >Loans</Link>
-                    </li>                
-                    <li className="hover:text-fuchsia-600 transition bg-slate-300  hover:border-fuchsia-600 cursor-pointer">
-                        <Link spy={true} smooth={true} to ="/dashboard">Dashboard</Link>
-                    </li>
+                    <Link spy={true} smooth={true} to="/" >
+                        <li className="hover:text-fuchsia-600 transition bg-slate-300  hover:border-fuchsia-600 cursor-pointer">Home</li>
+                    </Link> 
+                    <Link spy={true} smooth={true} to="/wallet" >
+                        <li className="hover:text-fuchsia-600 transition bg-slate-300  hover:border-fuchsia-600 cursor-pointer">Wallets</li>
+                    </Link>
+                    <Link spy={true} smooth={true} to="/loan" >
+                        <li className="hover:text-fuchsia-600 transition bg-slate-300  hover:border-fuchsia-600 cursor-pointer">Loans</li>
+                    </Link>
+                    <Link spy={true} smooth={true} to="/dashboard" >
+                        <li className="hover:text-fuchsia-600 transition bg-slate-300  hover:border-fuchsia-600 cursor-pointer">Dashboard</li>
+                    </Link> 
+                    <Link spy={true} smooth={true} to="/client" >
+                        <li className="hover:text-fuchsia-600 transition bg-slate-300  hover:border-fuchsia-600 cursor-pointer">Client</li>
+                    </Link>              
                 </ul>
                 </div>
             </div>
