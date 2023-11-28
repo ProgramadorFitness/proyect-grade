@@ -8,7 +8,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ProtectedRoute from './routes/ProtectedRoute.tsx';
 import Dashboard from './routes/Dashboard.tsx';
 import Login from './routes/Login.tsx';
-import Client from './routes/Client.tsx';
+import Client from './routes/Clients.tsx';
 
 
 

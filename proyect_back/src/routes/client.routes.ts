@@ -9,6 +9,7 @@ ClientRoutes.get("/list", list)
 //--Create
 ClientRoutes.post("/create", create)
 
+//--delete
 ClientRoutes.delete("/delete/:id", delet)
 
 export default ClientRoutes

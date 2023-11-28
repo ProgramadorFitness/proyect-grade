@@ -7,5 +7,6 @@ const ClientRoutes = (0, express_1.Router)();
 ClientRoutes.get("/list", client_controller_1.list);
 //--Create
 ClientRoutes.post("/create", client_controller_1.create);
+//--delete
 ClientRoutes.delete("/delete/:id", client_controller_1.delet);
 exports.default = ClientRoutes;
