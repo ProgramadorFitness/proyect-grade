@@ -7,4 +7,5 @@ export interface Client {
     email?: string;
     phone?: string;
     phone2?: string;
+    state?: string;
 }

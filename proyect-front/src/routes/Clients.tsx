@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Table_Client from '../componentes/Table_Client';
 import { Client } from '../models/client_model';
 import Api from '../controllers/peticiones';
+import Modal_Client from '../componentes/Modal_Client';
+import DefaultLayout from '../layout/DefaultLayout';
 
 
 interface State {
@@ -27,7 +29,16 @@ const Clients = () => {
 
   return (
     <div>
-      <Table_Client data={state.listClient}/>
+      <DefaultLayout>
+        
+        <div className='pt-6'>
+        <Modal_Client/>
+        </div>
+        <div className='py-8'>
+          <Table_Client data={state.listClient}/>
+        </div>
+      </DefaultLayout>
+      
     </div>
   )
 }
