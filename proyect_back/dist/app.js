@@ -32,6 +32,9 @@ const cors_1 = __importDefault(require("cors"));
 const connection_1 = __importDefault(require("./connection/connection"));
 //--Import Routes Clients
 const client_routes_1 = __importDefault(require("./routes/client.routes"));
+const wallets_routes_1 = __importDefault(require("./routes/wallets.routes"));
+const loans_routes_1 = __importDefault(require("./routes/loans.routes"));
+const collectors_routes_1 = __importDefault(require("./routes/collectors.routes"));
 const app = (0, express_1.default)();
 //--config
 app.set("port", process.env.PORT || 5001);
@@ -47,4 +50,7 @@ app.get("/api", (req, res) => {
     res.json("client active");
 });
 app.use("/api/clients", client_routes_1.default);
+app.use("/api/wallets", wallets_routes_1.default);
+app.use("/api/loans", loans_routes_1.default);
+app.use("/api/collectors", collectors_routes_1.default);
 exports.default = app;

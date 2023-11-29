@@ -14,18 +14,7 @@ import Client from './routes/Clients.tsx';
 
 
 const router = createBrowserRouter([
-  { 
-    path: '/wallet',
-    element: <Wallet/>
-  },
-  { 
-    path: '/client',
-    element: <Client/>
-  },
-  { 
-    path: '/loan', 
-    element: <Loan/> 
-  },
+
   {
     path: "/",
     element: <Login />,
@@ -37,6 +26,18 @@ const router = createBrowserRouter([
       {
       path: "/dashboard",
       element: <Dashboard />,
+      },
+      { 
+        path: '/wallet',
+        element: <Wallet/>
+      },
+      { 
+        path: '/client',
+        element: <Client/>
+      },
+      { 
+        path: '/loan', 
+        element: <Loan/> 
       }
     ]
 

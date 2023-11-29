@@ -4,7 +4,10 @@ import cors from 'cors'
 import connectioDB from "./connection/connection";
 
 //--Import Routes Clients
-import ClientRoutes from './routes/client.routes'
+import ClientRoutes from './routes/client.routes';
+import WalletsRoutes from "./routes/wallets.routes";
+import LoansRoutes from "./routes/loans.routes";
+import CollectorsRoutes from "./routes/collectors.routes";
 
 const app = express()
 
@@ -26,5 +29,8 @@ app.get("/api", (req, res) => {
 })
 
 app.use("/api/clients", ClientRoutes )
+app.use("/api/wallets", WalletsRoutes )
+app.use("/api/loans", LoansRoutes )
+app.use("/api/collectors", CollectorsRoutes )
 
 export default app;

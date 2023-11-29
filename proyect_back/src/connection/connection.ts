@@ -1,5 +1,8 @@
 import { Sequelize } from "sequelize-typescript";
 import { Client } from "../models/client.models";
+import { Loans } from "../models/loans.models";
+import { Wallets } from "../models/wallets.models";
+import { Collectors } from "../models/collectors.models";
 
 export const connection = new Sequelize ({
     dialect: "mysql",
@@ -8,7 +11,7 @@ export const connection = new Sequelize ({
     password: "",
     database: "bd_invercreditos",
     logging: false,
-    models: [Client]
+    models: [Client, Loans, Wallets, Collectors]
 })
 
 export default async function connectioDB(){
