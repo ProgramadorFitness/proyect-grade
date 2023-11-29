@@ -10,6 +10,16 @@ export const list: RequestHandler = async (req, res) => {
     }
 }
 
+export const list1: RequestHandler = async (req, res) => {
+    const {id} = req.params
+    try {
+        const clients: Client[] = await Client.findAll({where: {id}})
+        return res.status(200).json(clients)
+    } catch (error) {
+        return res.status(500).json({"message": "Hubo un error", "error": error})
+    }
+}
+
 export const create: RequestHandler = async (req, res) => {
     try {
         await Client.create({...req.body})

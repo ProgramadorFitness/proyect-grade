@@ -28,5 +28,5 @@ export class Loans extends Model {
         type:DataType.STRING,
         allowNull: false
     })
-    iva!:number
+    interest!:number
 }

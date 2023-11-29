@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.delet = exports.create = exports.list = void 0;
+exports.delet = exports.create = exports.list1 = exports.list = void 0;
 const client_models_1 = require("../models/client.models");
 const list = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -21,6 +21,17 @@ const list = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.list = list;
+const list1 = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    try {
+        const clients = yield client_models_1.Client.findAll({ where: { id } });
+        return res.status(200).json(clients);
+    }
+    catch (error) {
+        return res.status(500).json({ "message": "Hubo un error", "error": error });
+    }
+});
+exports.list1 = list1;
 const create = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield client_models_1.Client.create(Object.assign({}, req.body));

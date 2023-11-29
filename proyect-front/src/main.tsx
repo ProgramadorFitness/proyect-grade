@@ -6,9 +6,11 @@ import Loan  from './routes/Loans.tsx';
 import { AuthProvider } from './auth/AuthProvider.tsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ProtectedRoute from './routes/ProtectedRoute.tsx';
-import Dashboard from './routes/Dashboard.tsx';
 import Login from './routes/Login.tsx';
 import Client from './routes/Clients.tsx';
+import Signup from './componentes/Modal_Signup.tsx';
+import Dashboard from './routes/Dashboard.tsx';
+import Users from './routes/Users.tsx';
 
 
 
@@ -23,10 +25,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <ProtectedRoute />,
     children: [
-      {
-      path: "/dashboard",
-      element: <Dashboard />,
-      },
+
       { 
         path: '/wallet',
         element: <Wallet/>
@@ -38,7 +37,15 @@ const router = createBrowserRouter([
       { 
         path: '/loan', 
         element: <Loan/> 
-      }
+      },
+      {
+        path: "/users",
+        element: <Users />,
+        },
+        {
+          path: "/dashboard",
+          element: <Dashboard />,
+          },
     ]
 
   }

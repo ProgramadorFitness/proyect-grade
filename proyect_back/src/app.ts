@@ -8,6 +8,9 @@ import ClientRoutes from './routes/client.routes';
 import WalletsRoutes from "./routes/wallets.routes";
 import LoansRoutes from "./routes/loans.routes";
 import CollectorsRoutes from "./routes/collectors.routes";
+import LoginRoutes from "./routes/login.routes";
+
+
 
 const app = express()
 
@@ -32,5 +35,9 @@ app.use("/api/clients", ClientRoutes )
 app.use("/api/wallets", WalletsRoutes )
 app.use("/api/loans", LoansRoutes )
 app.use("/api/collectors", CollectorsRoutes )
+app.use("/api/login", LoginRoutes)
+
+//--Login MOngoose
+require("dotenv").config();
 
 export default app;
