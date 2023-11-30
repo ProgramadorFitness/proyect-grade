@@ -29,4 +29,10 @@ export class Loans extends Model {
         allowNull: false
     })
     interest!:number
+
+    @Column({
+        type: DataType.STRING,
+        allowNull: false
+    })
+    state!:string
 }

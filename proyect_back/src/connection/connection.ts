@@ -4,6 +4,7 @@ import { Loans } from "../models/loans.models";
 import { Wallets } from "../models/wallets.models";
 import { Collectors } from "../models/collectors.models";
 import { Login } from "../models/login.models";
+import { User } from "../models/users.models";
 
 export const connection = new Sequelize ({
     dialect: "mysql",
@@ -12,7 +13,7 @@ export const connection = new Sequelize ({
     password: "",
     database: "bd_invercreditos",
     logging: false,
-    models: [Client, Loans, Wallets, Collectors, Login]
+    models: [Client, Loans, Wallets, Collectors, Login, User]
 })
 
 

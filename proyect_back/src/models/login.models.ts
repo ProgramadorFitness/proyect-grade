@@ -23,4 +23,10 @@ export class Login extends Model {
         allowNull: false
     })
     tipo!:number
+
+    @Column({
+        type: DataType.STRING,
+        allowNull: false
+    })
+    id_user!:number
 }

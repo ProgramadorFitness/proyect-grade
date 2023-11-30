@@ -1,12 +1,9 @@
-import React from 'react';
-import { Client } from '../models/models';
+import { User } from "../models/models"
 
 interface Props {
-    data: Client[]
+  data: User[]
 }
-
-
-const Table_Client = ({data}: Props) => {
+const Table_User = ({data}: Props) => {
   return (
     <div className='overflow-x-auto shadow-md sm:rounded-lg'>
         <div className='flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-black dark:bg-slate-300'>
@@ -62,4 +59,5 @@ const Table_Client = ({data}: Props) => {
   )
 }
 
-export default Table_Client
+export default Table_User
+

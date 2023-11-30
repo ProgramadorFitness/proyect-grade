@@ -1,11 +1,11 @@
-import {Table, Model, Column, DataType} from 'sequelize-typescript';
+import {Table, Column, Model, DataType} from 'sequelize-typescript'
 
 @Table({
     timestamps: false,
-    tableName: "clients"
+    tableName:'users'
 })
 
-export class Client  extends Model {
+export class User extends Model {
     @Column({
         type: DataType.STRING,
         allowNull: false
@@ -46,7 +46,13 @@ export class Client  extends Model {
         type: DataType.STRING,
         allowNull: false
     })
-    phone2!:string
+    admission_date!: Date
+
+    @Column({
+        type: DataType.STRING,
+        allowNull: false
+    })
+    roll_type!: number
 
     @Column({
         type: DataType.STRING,

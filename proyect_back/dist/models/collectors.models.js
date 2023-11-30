@@ -16,31 +16,7 @@ __decorate([
         type: sequelize_typescript_1.DataType.STRING,
         allowNull: false
     })
-], Collectors.prototype, "name", void 0);
-__decorate([
-    (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.STRING,
-        allowNull: false
-    })
-], Collectors.prototype, "lastName", void 0);
-__decorate([
-    (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.STRING,
-        allowNull: false
-    })
-], Collectors.prototype, "email", void 0);
-__decorate([
-    (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.STRING,
-        allowNull: false
-    })
-], Collectors.prototype, "phone", void 0);
-__decorate([
-    (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.STRING,
-        allowNull: false
-    })
-], Collectors.prototype, "address", void 0);
+], Collectors.prototype, "id_user", void 0);
 exports.Collectors = Collectors = __decorate([
     (0, sequelize_typescript_1.Table)({
         timestamps: false,

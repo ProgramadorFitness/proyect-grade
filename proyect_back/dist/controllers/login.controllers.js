@@ -12,10 +12,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.login = void 0;
 const login_models_1 = require("../models/login.models");
 const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { username, password } = req.params;
     try {
-        yield login_models_1.Login.findAll({ where: { username, password } });
-        return res.status(200).json({ "message": "Loggin Succes" });
+        const logins = (yield login_models_1.Login.findAll());
+        return res.status(200).json(logins);
     }
     catch (error) {
         return res.status(500).json({ "message": "Hubo un error", "error": error });

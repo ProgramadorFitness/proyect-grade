@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Table_Client from '../componentes/Table_Client';
-import { Client } from '../models/client_model';
+import { Client } from '../models/models';
 import Api from '../controllers/peticiones';
 import Modal_Client from '../componentes/Modal_Client';
 import DefaultLayout from '../layout/DefaultLayout';

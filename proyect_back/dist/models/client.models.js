@@ -53,9 +53,15 @@ __decorate([
         allowNull: false
     })
 ], Client.prototype, "phone2", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.STRING,
+        allowNull: false
+    })
+], Client.prototype, "state", void 0);
 exports.Client = Client = __decorate([
     (0, sequelize_typescript_1.Table)({
         timestamps: false,
-        tableName: "clients2"
+        tableName: "clients"
     })
 ], Client);

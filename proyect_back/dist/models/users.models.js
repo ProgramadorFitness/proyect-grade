@@ -6,38 +6,68 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Login = void 0;
+exports.User = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
-let Login = class Login extends sequelize_typescript_1.Model {
+let User = class User extends sequelize_typescript_1.Model {
 };
-exports.Login = Login;
+exports.User = User;
 __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING,
         allowNull: false
     })
-], Login.prototype, "username", void 0);
+], User.prototype, "id_number", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING,
         allowNull: false
     })
-], Login.prototype, "password", void 0);
+], User.prototype, "name", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING,
         allowNull: false
     })
-], Login.prototype, "tipo", void 0);
+], User.prototype, "lastName", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING,
         allowNull: false
     })
-], Login.prototype, "id_user", void 0);
-exports.Login = Login = __decorate([
+], User.prototype, "address", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.STRING,
+        allowNull: false
+    })
+], User.prototype, "email", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.STRING,
+        allowNull: false
+    })
+], User.prototype, "phone", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.STRING,
+        allowNull: false
+    })
+], User.prototype, "admission_date", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.STRING,
+        allowNull: false
+    })
+], User.prototype, "roll_type", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.STRING,
+        allowNull: false
+    })
+], User.prototype, "state", void 0);
+exports.User = User = __decorate([
     (0, sequelize_typescript_1.Table)({
         timestamps: false,
-        tableName: "login"
+        tableName: 'users'
     })
-], Login);
+], User);

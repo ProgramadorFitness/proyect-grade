@@ -36,6 +36,7 @@ const wallets_routes_1 = __importDefault(require("./routes/wallets.routes"));
 const loans_routes_1 = __importDefault(require("./routes/loans.routes"));
 const collectors_routes_1 = __importDefault(require("./routes/collectors.routes"));
 const login_routes_1 = __importDefault(require("./routes/login.routes"));
+const users_routes_1 = __importDefault(require("./routes/users.routes"));
 const app = (0, express_1.default)();
 //--config
 app.set("port", process.env.PORT || 5001);
@@ -55,6 +56,7 @@ app.use("/api/wallets", wallets_routes_1.default);
 app.use("/api/loans", loans_routes_1.default);
 app.use("/api/collectors", collectors_routes_1.default);
 app.use("/api/login", login_routes_1.default);
+app.use("/api/users", users_routes_1.default);
 //--Login MOngoose
 require("dotenv").config();
 exports.default = app;

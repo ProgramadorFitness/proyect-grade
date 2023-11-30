@@ -9,6 +9,7 @@ import WalletsRoutes from "./routes/wallets.routes";
 import LoansRoutes from "./routes/loans.routes";
 import CollectorsRoutes from "./routes/collectors.routes";
 import LoginRoutes from "./routes/login.routes";
+import UsersRoutes from "./routes/users.routes";
 
 
 
@@ -36,6 +37,7 @@ app.use("/api/wallets", WalletsRoutes )
 app.use("/api/loans", LoansRoutes )
 app.use("/api/collectors", CollectorsRoutes )
 app.use("/api/login", LoginRoutes)
+app.use("/api/users", UsersRoutes)
 
 //--Login MOngoose
 require("dotenv").config();

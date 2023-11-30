@@ -1,5 +1,5 @@
 import React from 'react';
-import { Loan } from '../models/client_model';
+import { Loan } from '../models/models';
 
 
 interface Props {
@@ -48,10 +48,10 @@ const Table_Loan = ({data}: Props) => {
                     <div className="font-normal text-gray-500">{item.email}</div>
                     </div>
                     </th>
-                <td className="px-6 py-4">{item.id_number}</td>  
-                <td className="px-6 py-4">{item.address}</td>
-                <td className="px-6 py-4">{item.phone}</td>
-                <td className="px-6 py-4">{item.phone2}</td>
+                <td className="px-6 py-4">{}</td>  
+                <td className="px-6 py-4">{}</td>
+                <td className="px-6 py-4">{}</td>
+                <td className="px-6 py-4">{}</td>
                 <td className="px-6 py-4">{item.state}</td>
                 <td className="px-6 py-4">{item.value_initial}</td>
                 <td className="px-6 py-4">{item.value_end}</td>

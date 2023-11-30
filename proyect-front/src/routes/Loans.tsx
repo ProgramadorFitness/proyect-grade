@@ -3,7 +3,7 @@ import Modal_Loan from '../componentes/Modal_Loan'
 import Table_Loan from '../componentes/Table_Loan'
 import Api from '../controllers/peticiones'
 import DefaultLayout from '../layout/DefaultLayout'
-import { Loan } from '../models/client_model'
+import { Loan } from '../models/models'
 
 
 interface State {
