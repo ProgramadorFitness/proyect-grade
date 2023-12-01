@@ -21,7 +21,7 @@ const Loans = () => {
 useEffect(() => {
     (async function getLoans() {
         const api = new Api()
-        const response = (await api.getLoans()).data
+        const response = (await api.getLoansjoin()).data
         setState({loans:null, listLoans:response})
     })();
 },[]);

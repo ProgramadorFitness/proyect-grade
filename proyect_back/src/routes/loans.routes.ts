@@ -12,4 +12,7 @@ LoansRoutes.post("/create", create)
 //--delete
 LoansRoutes.delete("/delete/:id", delet)
 
+//--list join
+LoansRoutes.get("/listjoin")
+
 export default LoansRoutes

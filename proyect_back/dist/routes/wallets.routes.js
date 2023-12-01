@@ -9,4 +9,6 @@ WalletsRoutes.get("/list", wallets_controller_1.list);
 WalletsRoutes.post("/create", wallets_controller_1.create);
 //--delete
 WalletsRoutes.delete("/delete/:id", wallets_controller_1.delet);
+//--listjoin
+WalletsRoutes.get("/listjoin/:id");
 exports.default = WalletsRoutes;

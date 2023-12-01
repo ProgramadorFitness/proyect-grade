@@ -9,8 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.delet = exports.create = exports.list = void 0;
+exports.loansConsult = exports.delet = exports.create = exports.list = void 0;
 const loans_models_1 = require("../models/loans.models");
+const connection_1 = require("../connection/connection");
 const list = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const loans = yield loans_models_1.Loans.findAll();
@@ -42,3 +43,17 @@ const delet = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.delet = delet;
+function loansConsult() {
+    return new Promise((resolve, reject) => {
+        const sql = 'Select loans.id, clients.name, clients.id_number as id_number, clients.address, clients.phone, clients.phone2, clients.state, loans.value_initial, loans.value_end, loans.interest from loans inner join clients on loans.id_client = clients.id ';
+        connection_1.connection1.query(sql, (error, results) => {
+            if (error) {
+                reject(error);
+            }
+            else {
+                resolve(results);
+            }
+        });
+    });
+}
+exports.loansConsult = loansConsult;

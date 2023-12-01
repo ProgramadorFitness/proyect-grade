@@ -9,9 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.delet = exports.create = exports.list = void 0;
+exports.walletsConsult = exports.delet = exports.create = exports.list = void 0;
 const wallets_models_1 = require("../models/wallets.models");
+const connection_1 = require("../connection/connection");
 const list = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
     try {
         const loans = yield wallets_models_1.Wallets.findAll();
         return res.status(200).json(loans);
@@ -42,3 +44,27 @@ const delet = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.delet = delet;
+function walletsConsult(id) {
+    return new Promise((resolve, reject) => {
+        const sql = `Select * from wallets inner join loans join clients join collectors join users on wallets.id_loan = loans.id and loans.id_client = clients.id and wallets.id_collector = collectors.id and collectors.id_user = users.id and wallets.id = ${id}`;
+        connection_1.connection1.query(sql, (error, results) => {
+            if (error) {
+                reject(error);
+            }
+            else {
+                resolve(results);
+            }
+        });
+    });
+}
+exports.walletsConsult = walletsConsult;
+/* app.get("/api/wallets/listjoin", async (req: Request, res: Response, any) => {
+   try {
+       const results: Wallets[] = await realizarConsulta();
+       res.json(results)
+   } catch (error) {
+       console.error('Error al realizar la consulta:', error);
+       res.status(500).send('Error interno del servidor');
+       
+   }
+} )*/

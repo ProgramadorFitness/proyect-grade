@@ -5,6 +5,7 @@ import { Wallets } from "../models/wallets.models";
 import { Collectors } from "../models/collectors.models";
 import { Login } from "../models/login.models";
 import { User } from "../models/users.models";
+import mysql, { Connection } from "mysql2";
 
 export const connection = new Sequelize ({
     dialect: "mysql",
@@ -15,6 +16,13 @@ export const connection = new Sequelize ({
     logging: false,
     models: [Client, Loans, Wallets, Collectors, Login, User]
 })
+
+export const connection1: Connection = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : '',
+    database : 'bd_invercreditos'
+  });
 
 
 export default async function connectioDB(){
