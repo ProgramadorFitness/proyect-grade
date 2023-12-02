@@ -9,8 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.delet = exports.create = exports.list1 = exports.list = void 0;
+exports.ClientsConsult = exports.delet = exports.create = exports.list1 = exports.list = void 0;
 const client_models_1 = require("../models/client.models");
+const connection_1 = require("../connection/connection");
 const list = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const clients = yield client_models_1.Client.findAll();
@@ -53,3 +54,17 @@ const delet = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.delet = delet;
+function ClientsConsult(id) {
+    return new Promise((resolve, reject) => {
+        const sql = `SELECT * FROM clients WHERE id_number LIKE '${id}%'`;
+        connection_1.connection1.query(sql, (error, results) => {
+            if (error) {
+                reject(error);
+            }
+            else {
+                resolve(results);
+            }
+        });
+    });
+}
+exports.ClientsConsult = ClientsConsult;

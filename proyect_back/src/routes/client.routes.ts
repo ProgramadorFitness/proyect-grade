@@ -15,4 +15,7 @@ ClientRoutes.post("/create", create)
 //--delete
 ClientRoutes.delete("/delete/:id", delet)
 
+//--list-identication
+ClientRoutes.get("/ident/:id")
+
 export default ClientRoutes

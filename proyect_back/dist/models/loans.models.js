@@ -41,6 +41,12 @@ __decorate([
         allowNull: false
     })
 ], Loans.prototype, "state", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.STRING,
+        allowNull: false
+    })
+], Loans.prototype, "id_wallet", void 0);
 exports.Loans = Loans = __decorate([
     (0, sequelize_typescript_1.Table)({
         timestamps: false,

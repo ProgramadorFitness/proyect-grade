@@ -36,7 +36,7 @@ export const delet: RequestHandler = async (req, res) => {
 }
 export  function walletsConsult(id:string): Promise<Wallets[]> {
     return new Promise((resolve, reject) => {
-      const sql = `Select * from wallets inner join loans join clients join collectors join users on wallets.id_loan = loans.id and loans.id_client = clients.id and wallets.id_collector = collectors.id and collectors.id_user = users.id and wallets.id = ${id}`;
+      const sql = `Select * from loans inner join clients join wallets join collectors join users on loans.id_client = clients.id and loans.id_wallet = wallets.id and  wallets.id_collector = collectors.id and collectors.id_user = users.id and wallets.id = ${id}`;
       
       connection1.query(sql, (error: QueryError, results: Wallets[]) => {
         if (error) {

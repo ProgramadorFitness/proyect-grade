@@ -16,6 +16,8 @@ import bodyParser from "body-parser";
 import { walletsConsult } from "./controllers/wallets.controller";
 import { Loans } from "./models/loans.models";
 import { loansConsult } from "./controllers/loans.controller";
+import { ClientsConsult } from "./controllers/client.controller";
+import { Client } from "./models/client.models";
 
 
 
@@ -75,6 +77,19 @@ app.get("/api/wallets/listjoin/:id", async (req: Request, res: Response, any) =>
 app.get("/api/loans/listjoin", async (req: Request, res: Response, any) => {
     try {
         const results: Loans[] = await loansConsult();
+        res.json(results)
+    } catch (error) {
+        console.error('Error al realizar la consulta:', error);
+        res.status(500).send('Error interno del servidor');
+        
+    }
+} )
+
+//--Client-Sql
+app.get("/api/clients/ident/:id", async (req: Request, res: Response, any) => {
+    const id = req.params.id
+    try {
+        const results: Client[] = await ClientsConsult(id);
         res.json(results)
     } catch (error) {
         console.error('Error al realizar la consulta:', error);

@@ -16,12 +16,6 @@ __decorate([
         type: sequelize_typescript_1.DataType.STRING,
         allowNull: false
     })
-], Wallets.prototype, "id_loan", void 0);
-__decorate([
-    (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.STRING,
-        allowNull: false
-    })
 ], Wallets.prototype, "id_collector", void 0);
 exports.Wallets = Wallets = __decorate([
     (0, sequelize_typescript_1.Table)({

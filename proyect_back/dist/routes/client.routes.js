@@ -11,4 +11,6 @@ ClientRoutes.get("/list1/:id", client_controller_1.list1);
 ClientRoutes.post("/create", client_controller_1.create);
 //--delete
 ClientRoutes.delete("/delete/:id", client_controller_1.delet);
+//--list-identication
+ClientRoutes.get("/ident/:id");
 exports.default = ClientRoutes;

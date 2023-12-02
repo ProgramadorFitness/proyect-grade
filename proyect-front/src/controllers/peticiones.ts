@@ -6,6 +6,10 @@ export default class Api {
         return axios.get("http://localhost:5001/api/clients/list")
     }
 
+    public getClientsIdent(id:string){
+        return axios.get(`http://localhost:5001/api/clients/ident/${id}`)
+    }
+
     public getLogin(username: string, password:string){
 
         return axios.post('http://localhost:5001/api/login/login', {username: username, password: password})

@@ -53,4 +53,22 @@ export class Client  extends Model {
         allowNull: false
     })
     state!:string
+
+    @Column({
+        type: DataType.STRING,
+        allowNull: false
+    })
+    genre!:string
+
+    @Column({
+        type: DataType.STRING,
+        allowNull: false
+    })
+    city!:string
+
+    @Column({
+        type: DataType.STRING,
+        allowNull: false
+    })
+    neighborhood!:string
 }

@@ -50,6 +50,7 @@ const login_routes_1 = __importDefault(require("./routes/login.routes"));
 const users_routes_1 = __importDefault(require("./routes/users.routes"));
 const wallets_controller_1 = require("./controllers/wallets.controller");
 const loans_controller_1 = require("./controllers/loans.controller");
+const client_controller_1 = require("./controllers/client.controller");
 exports.app = (0, express_1.default)();
 //--config
 exports.app.set("port", process.env.PORT || 5001);
@@ -96,6 +97,18 @@ exports.app.get("/api/wallets/listjoin/:id", (req, res, any) => __awaiter(void 0
 exports.app.get("/api/loans/listjoin", (req, res, any) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const results = yield (0, loans_controller_1.loansConsult)();
+        res.json(results);
+    }
+    catch (error) {
+        console.error('Error al realizar la consulta:', error);
+        res.status(500).send('Error interno del servidor');
+    }
+}));
+//--Client-Sql
+exports.app.get("/api/clients/ident/:id", (req, res, any) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = req.params.id;
+    try {
+        const results = yield (0, client_controller_1.ClientsConsult)(id);
         res.json(results);
     }
     catch (error) {

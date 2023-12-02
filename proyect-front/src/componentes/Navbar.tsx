@@ -12,7 +12,7 @@ const Nav = () => {
     }
     
     const  content = <>
-        <div className="lg:hidden block absolute top-16 w-full left-0 rigth-0 bg-slate-300 transition">
+        <div className="lg:hidden block absolute top-16 w-full left-0 rigth-0 bg-slate-300 transition overflow-y-auto overflow-x-auto">
             <ul className="text-center text-xl p-20"> 
 
                     <Link spy={true} smooth={true} to="/dashboard" > 
@@ -37,7 +37,7 @@ const Nav = () => {
 
   return (
     <nav>
-        <div className="h-10vh flex justify-between z-50 text-black lg:py-5 px-20 py-4 flex-1">
+        <div className="h-10vh flex justify-between z-50 text-black lg:py-5 px-20 py-4 flex-1 overflow-y-auto overflow-x-auto">
             < div className="flex items-left flex-1">
                 <span className="text-3xl font-bold">
                     INVER CREDITOS
@@ -68,7 +68,7 @@ const Nav = () => {
                 {click && content}
             </div>
 
-            <button className="block sm:hidden transtion" onClick={handleClick}>
+            <button className="block sm:hidden transtion " onClick={handleClick}>
                 {click ? <FaTimes/> : <FaBars/>}
             </button>
         </div>

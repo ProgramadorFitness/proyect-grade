@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import Table_Wallets from '../componentes/Table_Wallets'
 import DefaultLayout from '../layout/DefaultLayout'
 import {  Wallet } from '../models/models'
 import Api from '../controllers/peticiones'
@@ -44,7 +43,9 @@ useEffect(() => {
 
   return (
     <DefaultLayout>
+      <div className='pt-6'>
       <Tabs_Table_Wallets data={state1.listWallet1}/>
+      </div>
     </DefaultLayout>  )
 }
 

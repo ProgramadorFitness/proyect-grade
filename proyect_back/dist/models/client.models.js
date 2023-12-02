@@ -59,6 +59,24 @@ __decorate([
         allowNull: false
     })
 ], Client.prototype, "state", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.STRING,
+        allowNull: false
+    })
+], Client.prototype, "genre", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.STRING,
+        allowNull: false
+    })
+], Client.prototype, "city", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.STRING,
+        allowNull: false
+    })
+], Client.prototype, "neighborhood", void 0);
 exports.Client = Client = __decorate([
     (0, sequelize_typescript_1.Table)({
         timestamps: false,

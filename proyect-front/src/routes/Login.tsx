@@ -18,6 +18,7 @@ export default function Login() {
     const { name, value } = e.target as HTMLInputElement;
     if (name === "username") {
       setUsername(value);
+      console.log(username)
     }
     if (name === "password") {
       setPassword(value);

@@ -8,6 +8,9 @@ export interface Client {
     phone?: string;
     phone2?: string;
     state?: string;
+    genre?: string;
+    city?: string;
+    neighborhood?: string;
 }
 
 export interface Loan {

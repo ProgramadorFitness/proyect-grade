@@ -14,8 +14,8 @@ const Modal_Client = () => {
 
     {showModal ? (
         <>
-        <div className=' p-8 fixed inset-0 bg-black bg-opacity-80 backdrop-blur-sm flex justify-center '>
-            <div className='bg-slate-400  rounded flex flex-col items-center gap-5'>
+        <div className=' p-8 fixed inset-0 bg-black bg-opacity-80 backdrop-blur-sm flex justify-center overflow-y-auto overflow-x-auto'>
+            <div className='bg-slate-400  rounded flex flex-col items-center gap-5 overflow-y-auto overflow-x-auto'>
                 <div className="p-8">
                 <form >
                     <div className="border-b border-gray-900/10  " >

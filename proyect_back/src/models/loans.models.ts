@@ -35,4 +35,10 @@ export class Loans extends Model {
         allowNull: false
     })
     state!:string
+
+    @Column({
+        type: DataType.STRING,
+        allowNull: false
+    })
+    id_wallet!:string
 }

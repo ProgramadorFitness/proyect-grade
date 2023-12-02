@@ -1,5 +1,8 @@
 import { RequestHandler } from "express";
 import { Client } from "../models/client.models";
+import connectioDB, {connection1} from "../connection/connection";
+import { QueryError } from "mysql2";
+
 
 export const list: RequestHandler = async (req, res) => {
     try {
@@ -38,3 +41,18 @@ export const delet: RequestHandler = async (req, res) => {
         return res.status(500).json({"message": "Hubo un error", "error": error})
     }
 }
+
+export  function ClientsConsult(id:string): Promise<Client[]> {
+    
+    return new Promise((resolve, reject) => {
+      const sql = `SELECT * FROM clients WHERE id_number LIKE '${id}%'`;
+      
+      connection1.query(sql, (error: QueryError, results: Client[]) => {
+        if (error) {
+            reject(error);
+          } else {
+            resolve(results);
+          }
+      })
+    });
+  }
