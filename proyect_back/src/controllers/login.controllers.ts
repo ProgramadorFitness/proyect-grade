@@ -1,5 +1,9 @@
 import { RequestHandler } from "express";
 import { Login } from "../models/login.models";
+import connectioDB, {connection1} from "../connection/connection";
+
+import { QueryError } from "mysql2";
+
 
 export const login: RequestHandler = async (req, res) => {
     try {
@@ -11,3 +15,17 @@ export const login: RequestHandler = async (req, res) => {
 
 
 }
+
+export  function loginConsult(username:string , password:string): Promise<Login[]> {
+    return new Promise((resolve, reject) => {
+      const sql = `Select * from login where username ='${username}' and password = '${password}'`;
+      
+      connection1.query(sql, (error: QueryError, results: Login[]) => {
+        if (error) {
+            reject(error);
+          } else {
+            resolve(results);
+          }
+      })
+    });
+  }

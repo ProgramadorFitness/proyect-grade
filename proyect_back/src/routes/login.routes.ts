@@ -6,6 +6,8 @@ const LoginRoutes = Router()
 //--List
 LoginRoutes.post("/login", login)
 
+LoginRoutes.get("/login/:username,:password")
+
 
 
 

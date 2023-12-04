@@ -34,4 +34,8 @@ export default class Api {
     public getLoansjoin(){
         return axios.get("http://localhost:5001/api/loans/listjoin")
     }
+
+    public getLoginSQL(username: string, password:string){
+        return axios.get(`http://localhost:5001/api/login/login/${username},${password}`)
+    }
 }

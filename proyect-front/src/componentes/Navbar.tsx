@@ -1,15 +1,26 @@
 /*import { Link } from "react-scroll";*/
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {FaTimes, FaBars} from "react-icons/fa";
+import { FaAngleDoubleRight } from "react-icons/fa";
 /*import Image from '../assets/icono.png';*/
 import { useState } from "react";
+import { useAuth } from "../auth/AuthProvider";
 
 
 const Nav = () => {
     const [click, setClick] = useState(false);
+    const auth = useAuth();
+    const goTo = useNavigate();
+
     const handleClick = () => {
         setClick(!click);
     }
+
+    const handleClickLogOut = () => {
+        if(auth.isAuthenticated == true){
+            setClick(!click);
+    }
+}
     
     const  content = <>
         <div className="lg:hidden block absolute top-16 w-full left-0 rigth-0 bg-slate-300 transition overflow-y-auto overflow-x-auto">
@@ -30,7 +41,11 @@ const Nav = () => {
                     <Link spy={true} smooth={true} to="/client" >
                         <li className="my-4 py-4 border-b bg-slate-300 hover:rounded">Client</li>
                     </Link>
-
+                    <Link spy={true} smooth={true} to="/" >
+                        <li 
+                        onClick={handleClickLogOut}
+                        className="hover:text-fuchsia-600 transition bg-slate-300  hover:border-fuchsia-600 cursor-pointer">LogOut</li>
+                    </Link>
             </ul>
         </div>
     </>
@@ -60,7 +75,12 @@ const Nav = () => {
                     </Link> 
                     <Link spy={true} smooth={true} to="/client" >
                         <li className="hover:text-fuchsia-600 transition bg-slate-300  hover:border-fuchsia-600 cursor-pointer">Client</li>
-                    </Link>              
+                    </Link> 
+                    <Link spy={true} smooth={true} to="/" >
+                        <li 
+                        onClick={handleClickLogOut}
+                        className="hover:text-fuchsia-600 transition bg-slate-300  hover:border-fuchsia-600 cursor-pointer">LogOut</li>
+                    </Link>
                 </ul>
                 </div>
             </div>
@@ -71,7 +91,8 @@ const Nav = () => {
             <button className="block sm:hidden transtion " onClick={handleClick}>
                 {click ? <FaTimes/> : <FaBars/>}
             </button>
-        </div>
+            </div>
+        
     </nav>
 
   );

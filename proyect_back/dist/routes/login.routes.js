@@ -5,4 +5,5 @@ const login_controllers_1 = require("../controllers/login.controllers");
 const LoginRoutes = (0, express_1.Router)();
 //--List
 LoginRoutes.post("/login", login_controllers_1.login);
+LoginRoutes.get("/login/:username,:password");
 exports.default = LoginRoutes;

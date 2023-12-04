@@ -51,6 +51,7 @@ const users_routes_1 = __importDefault(require("./routes/users.routes"));
 const wallets_controller_1 = require("./controllers/wallets.controller");
 const loans_controller_1 = require("./controllers/loans.controller");
 const client_controller_1 = require("./controllers/client.controller");
+const login_controllers_1 = require("./controllers/login.controllers");
 exports.app = (0, express_1.default)();
 //--config
 exports.app.set("port", process.env.PORT || 5001);
@@ -109,6 +110,19 @@ exports.app.get("/api/clients/ident/:id", (req, res, any) => __awaiter(void 0, v
     const id = req.params.id;
     try {
         const results = yield (0, client_controller_1.ClientsConsult)(id);
+        res.json(results);
+    }
+    catch (error) {
+        console.error('Error al realizar la consulta:', error);
+        res.status(500).send('Error interno del servidor');
+    }
+}));
+//--Login-Sql
+exports.app.get("/api/login/login/:username,:password", (req, res, any) => __awaiter(void 0, void 0, void 0, function* () {
+    const username = req.params.username;
+    const password = req.params.password;
+    try {
+        const results = yield (0, login_controllers_1.loginConsult)(username, password);
         res.json(results);
     }
     catch (error) {

@@ -28,19 +28,21 @@ export default function Login() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    try {
-      const api = new Api();
-      const response = await(await api.getLogin(username, password))
-      console.log(response)
-
-      if(response.data){
-         auth.isAuthenticated = true
-         goTo("/client");
+      try {
+        const api = new Api();
+        const response = await (await (api.getLoginSQL(username, password))).statusText
+        console.log(response)
+  
+        if(response == 'OK'){
+           auth.isAuthenticated = true
+           goTo("/client");
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
-    }
   }
+
+
 
   return (
     <DefaultLayout>

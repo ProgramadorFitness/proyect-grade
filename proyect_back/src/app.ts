@@ -18,6 +18,8 @@ import { Loans } from "./models/loans.models";
 import { loansConsult } from "./controllers/loans.controller";
 import { ClientsConsult } from "./controllers/client.controller";
 import { Client } from "./models/client.models";
+import { loginConsult } from "./controllers/login.controllers";
+import { Login } from "./models/login.models";
 
 
 
@@ -98,4 +100,17 @@ app.get("/api/clients/ident/:id", async (req: Request, res: Response, any) => {
     }
 } )
 
+//--Login-Sql
+app.get("/api/login/login/:username,:password", async (req: Request, res: Response, any) => {
+    const username = req.params.username
+    const password = req.params.password
+    try {
+        const results: Login[] = await loginConsult(username,password);
+        res.json(results)
+    } catch (error) {
+        console.error('Error al realizar la consulta:', error);
+        res.status(500).send('Error interno del servidor');
+        
+    }
+} )
 export default app;
