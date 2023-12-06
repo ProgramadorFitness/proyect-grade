@@ -8,7 +8,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ProtectedRoute from './routes/ProtectedRoute.tsx';
 import Login from './routes/Login.tsx';
 import Client from './routes/Clients.tsx';
-import Signup from './componentes/Modal_Signup.tsx';
 import Dashboard from './routes/Dashboard.tsx';
 import Users from './routes/Users.tsx';
 

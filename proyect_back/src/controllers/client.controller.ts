@@ -2,6 +2,9 @@ import { RequestHandler } from "express";
 import { Client } from "../models/client.models";
 import connectioDB, {connection1} from "../connection/connection";
 import { QueryError } from "mysql2";
+import multer from "multer";
+import { Archive } from "../models/archive.models";
+import fs from "node:fs"
 
 
 export const list: RequestHandler = async (req, res) => {
@@ -45,7 +48,7 @@ export const delet: RequestHandler = async (req, res) => {
 export  function ClientsConsult(id:string): Promise<Client[]> {
     
     return new Promise((resolve, reject) => {
-      const sql = `SELECT * FROM clients WHERE id_number LIKE '${id}%'`;
+      const sql = `SELECT * FROM clients WHERE id_number LIKE '%${id}%'`;
       
       connection1.query(sql, (error: QueryError, results: Client[]) => {
         if (error) {
@@ -56,3 +59,25 @@ export  function ClientsConsult(id:string): Promise<Client[]> {
       })
     });
   }
+
+  /*export function savePdf(nameArchive:string | undefined, routeArchive:string | undefined): Promise<Archive[]>{
+    return new Promise((resolve, reject) => {
+
+        connection1.execute(`INSERT INTO archive(name, route) VALUES (${nameArchive}, ${routeArchive})`, (error: QueryError, results: Archive[]) => {
+            if (error) {
+                reject(error);
+              } else {
+                resolve(results);
+              }
+        })
+    });
+
+  }*/
+
+  export function savePdf(file: any){
+    const newPath = `./uploads/${file.originalname}`;
+    fs.renameSync(file.path, newPath)
+    return newPath
+  }
+
+

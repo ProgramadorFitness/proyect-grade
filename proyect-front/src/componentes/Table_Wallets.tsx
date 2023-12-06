@@ -31,10 +31,10 @@ const Table_Wallets = ({data}: Props) => {
                 <th scope="col" className="px-6 py-3">PHONE</th>
                 <th scope="col" className="px-6 py-3">PHONE #2</th>
                 <th scope="col" className="px-6 py-3">STATE</th>
-                <th scope="col" className="px-6 py-3">ACTION</th>
                 <th scope="col" className="px-6 py-3">VALUE INITIAL</th>
                 <th scope="col" className="px-6 py-3">VALUE END</th>
                 <th scope="col" className="px-6 py-3">INTEREST</th>
+                <th scope="col" className="px-6 py-3">ACTION</th>
             </thead>
             <tbody>
             {data?.map((item) => (
@@ -54,16 +54,16 @@ const Table_Wallets = ({data}: Props) => {
                     <div className="font-normal text-gray-500">{item.email}</div>
                     </div>
                     </th>
-                <td className="px-6 py-4">{item.address}</td>  
+                <td className="px-6 py-4">{item.id_number}</td>  
+                <td className="px-6 py-4">{item.address}</td>
                 <td className="px-6 py-4">{item.phone}</td>
                 <td className="px-6 py-4">{item.phone2}</td>
-                <td className="px-6 py-4">{item.state}</td>
                 <td className="px-6 py-4">{item.state}</td>
                 <td className="px-6 py-4">{item.value_initial}</td>
                 <td className="px-6 py-4">{item.value_end}</td>
                 <td className="px-6 py-4">{item.interest}</td>
                 <td className="px-6 py-4">
-                <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+                <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit Loan</a>
                 </td>
                 </tr>
                 ))}

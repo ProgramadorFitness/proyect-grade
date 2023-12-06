@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Client } from '../models/models';
 import Api from '../controllers/peticiones';
+import { useAuth } from '../auth/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
 interface State {
   client: Client | null
@@ -27,6 +29,13 @@ const Modal_Loan = () => {
     const [neigt, setNeigt] = useState("")
     const [phone, setPhone] = useState("")
     const [phone2, setPhone2] = useState("")
+    const [state1, setState1] = useState("activo")
+    const [wallet, setWallet] = useState("")
+    const [id_wallet, set_Wallet] = useState("")
+    const [collector, setCollector] = useState("")
+    const [id_client, setIdClient] = useState("")
+    const auth = useAuth();
+    const goTo = useNavigate();
 
     const [data, setData] = useState<Client[]>()
 
@@ -53,6 +62,16 @@ const Modal_Loan = () => {
       if (name === "name") {
         setName(value)
       }
+
+      if (name === "wallet") {
+        setWallet(value)
+      }
+
+      if(name=="collector"){
+        setCollector(value)
+      }
+
+     
       getClients();
       
       const a  = +valueInicial;
@@ -82,6 +101,7 @@ const Modal_Loan = () => {
           setPhone(String(data?.map((item) =>(item.phone))))
           setPhone2(String(data?.map((item) =>(item.phone2))))
           setEmail(String(data?.map((item) =>(item.email))))
+          setIdClient(String(data?.map((item) =>(item.id))))
 
       }
         
@@ -90,7 +110,24 @@ const Modal_Loan = () => {
     async function handleSubmit(e: React.FormEvent) {
       e.preventDefault();
 
-   
+      if(wallet=="CARTERA #1"){
+        set_Wallet("1")
+      }else{
+        set_Wallet("2")
+      }
+
+      try {
+        const api = new Api();
+        const response = await (await (api.postLoans(id_client, valueInicial, valueEnd, interest, state1, id_wallet))).statusText
+        console.log(response)
+  
+        if(response == 'OK'){
+           auth.isAuthenticated = true
+           goTo("/client");
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     
@@ -232,7 +269,7 @@ const Modal_Loan = () => {
                     <div className='mt-5 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
 
                     </div>
-                    <div className="border-t sm:col-span flex items-center " >
+                    <div className=" border-t sm:col-span flex items-center " >
                       <div >
                       <label  className="block text-sm font-medium leading-6 text-gray-900">Wallet</label>
                             <select id="wallet" 
@@ -240,18 +277,18 @@ const Modal_Loan = () => {
                             name="wallet"  
                             
                             className=" rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                            <option>1</option>
-                            <option>2</option>
+                            <option>CARTERA #1</option>
+                            <option>CARTERA #2</option>
                             </select>
                       </div>
 
-                      <div>
-                      <label  className="block text-sm font-medium leading-6 text-gray-900">Collector</label>
+                      <div className='px-6'>
+                      <label  className="block text-sm font-medium leading-6 text-gray-900 ">Collector</label>
                             <select id="collector" 
                             name="collector"  
                             className=" rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                            <option>1</option>
-                            <option>2</option>
+                            <option>ANDRES PALACIOS</option>
+                            <option>KEVIN VILLOTA</option>
                             </select>
                       </div>
                     </div>

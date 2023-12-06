@@ -45,3 +45,17 @@ export  function loansConsult(): Promise<Loans[]> {
       })
     });
   }
+
+  export  function InsertLoan(): Promise<Loans[]> {
+    return new Promise((resolve, reject) => {
+      const sql = '';
+      
+      connection1.query(sql, (error: QueryError, results: Loans[]) => {
+        if (error) {
+            reject(error);
+          } else {
+            resolve(results);
+          }
+      })
+    });
+  }

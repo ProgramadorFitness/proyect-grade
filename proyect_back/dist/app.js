@@ -35,12 +35,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.app = void 0;
+exports.multer = exports.app = void 0;
 const express_1 = __importStar(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
 const connection_1 = __importDefault(require("./connection/connection"));
-const mysql2_1 = __importDefault(require("mysql2"));
 //--Import Routes Clients
 const client_routes_1 = __importDefault(require("./routes/client.routes"));
 const wallets_routes_1 = __importDefault(require("./routes/wallets.routes"));
@@ -53,6 +52,7 @@ const loans_controller_1 = require("./controllers/loans.controller");
 const client_controller_1 = require("./controllers/client.controller");
 const login_controllers_1 = require("./controllers/login.controllers");
 exports.app = (0, express_1.default)();
+exports.multer = require('multer');
 //--config
 exports.app.set("port", process.env.PORT || 5001);
 //--middlleswares
@@ -61,7 +61,7 @@ exports.app.use((0, express_1.json)());
 exports.app.use((0, cors_1.default)());
 exports.app.use((0, express_1.urlencoded)({ extended: false }));
 exports.app.use(express_1.default.json());
-//app.use(bodyParser.json())
+const upload = (0, exports.multer)({ dest: 'uploads/' });
 //--conexion
 (0, connection_1.default)();
 //--routes
@@ -75,13 +75,6 @@ exports.app.use("/api/collectors", collectors_routes_1.default);
 exports.app.use("/api/login", login_routes_1.default);
 exports.app.use("/api/users", users_routes_1.default);
 //app.use("/api/wallets/listjoin", WalletsRoutes )
-//--Join
-const connection1 = mysql2_1.default.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'bd_invercreditos'
-});
 //--Walltes-Sql
 exports.app.get("/api/wallets/listjoin/:id", (req, res, any) => __awaiter(void 0, void 0, void 0, function* () {
     const id = req.params.id;
@@ -130,4 +123,15 @@ exports.app.get("/api/login/login/:username,:password", (req, res, any) => __awa
         res.status(500).send('Error interno del servidor');
     }
 }));
+//--Save-1-Pdf
+exports.app.post("/api/clients/savePdf", upload.single('IMG_0421'), (req, res, any) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(req.file);
+    (0, client_controller_1.savePdf)(req.file);
+    res.send('End');
+}));
+//--Save-several-Pdf
+exports.app.post("/api/clients/savePdfs", upload.array('IMG_0421', 10), (req, res, any) => {
+    req.files.map(client_controller_1.savePdf);
+    res.send('End');
+});
 exports.default = exports.app;

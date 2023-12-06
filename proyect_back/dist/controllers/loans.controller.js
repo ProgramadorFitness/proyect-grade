@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.loansConsult = exports.delet = exports.create = exports.list = void 0;
+exports.InsertLoan = exports.loansConsult = exports.delet = exports.create = exports.list = void 0;
 const loans_models_1 = require("../models/loans.models");
 const connection_1 = require("../connection/connection");
 const list = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -57,3 +57,17 @@ function loansConsult() {
     });
 }
 exports.loansConsult = loansConsult;
+function InsertLoan() {
+    return new Promise((resolve, reject) => {
+        const sql = '';
+        connection_1.connection1.query(sql, (error, results) => {
+            if (error) {
+                reject(error);
+            }
+            else {
+                resolve(results);
+            }
+        });
+    });
+}
+exports.InsertLoan = InsertLoan;

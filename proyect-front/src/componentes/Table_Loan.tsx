@@ -58,7 +58,7 @@ const Table_Loan = ({data}: Props) => {
                 <td className="px-6 py-4">{item.value_end}</td>
                 <td className="px-6 py-4">{item.interest}</td>
                 <td className="px-6 py-4">
-                <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+                <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit Loan</a>
                 </td>
                 </tr>
                 ))}

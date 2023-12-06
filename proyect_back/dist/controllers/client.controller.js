@@ -8,10 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ClientsConsult = exports.delet = exports.create = exports.list1 = exports.list = void 0;
+exports.savePdf = exports.ClientsConsult = exports.delet = exports.create = exports.list1 = exports.list = void 0;
 const client_models_1 = require("../models/client.models");
 const connection_1 = require("../connection/connection");
+const node_fs_1 = __importDefault(require("node:fs"));
 const list = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const clients = yield client_models_1.Client.findAll();
@@ -56,7 +60,7 @@ const delet = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.delet = delet;
 function ClientsConsult(id) {
     return new Promise((resolve, reject) => {
-        const sql = `SELECT * FROM clients WHERE id_number LIKE '${id}%'`;
+        const sql = `SELECT * FROM clients WHERE id_number LIKE '%${id}%'`;
         connection_1.connection1.query(sql, (error, results) => {
             if (error) {
                 reject(error);
@@ -68,3 +72,22 @@ function ClientsConsult(id) {
     });
 }
 exports.ClientsConsult = ClientsConsult;
+/*export function savePdf(nameArchive:string | undefined, routeArchive:string | undefined): Promise<Archive[]>{
+  return new Promise((resolve, reject) => {
+
+      connection1.execute(`INSERT INTO archive(name, route) VALUES (${nameArchive}, ${routeArchive})`, (error: QueryError, results: Archive[]) => {
+          if (error) {
+              reject(error);
+            } else {
+              resolve(results);
+            }
+      })
+  });
+
+}*/
+function savePdf(file) {
+    const newPath = `./uploads/${file.originalname}`;
+    node_fs_1.default.renameSync(file.path, newPath);
+    return newPath;
+}
+exports.savePdf = savePdf;

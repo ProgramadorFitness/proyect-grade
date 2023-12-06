@@ -2,7 +2,7 @@ import express, { json, urlencoded, Request, Response } from "express";
 import morgan from "morgan";
 import cors from 'cors'
 import connectioDB,{connection} from "./connection/connection";
-import mysql, { Connection, QueryError } from 'mysql2';
+import mysql, { Connection, QueryError } from 'mysql2/promise';
 
 //--Import Routes Clients
 import ClientRoutes from './routes/client.routes';
@@ -16,14 +16,21 @@ import bodyParser from "body-parser";
 import { walletsConsult } from "./controllers/wallets.controller";
 import { Loans } from "./models/loans.models";
 import { loansConsult } from "./controllers/loans.controller";
-import { ClientsConsult } from "./controllers/client.controller";
+import { ClientsConsult, savePdf } from "./controllers/client.controller";
 import { Client } from "./models/client.models";
 import { loginConsult } from "./controllers/login.controllers";
 import { Login } from "./models/login.models";
+import { Archive } from "./models/archive.models";
 
 
 
 export const app = express()
+export const multer = require('multer')
+
+
+
+
+
 
 //--config
 app.set("port", process.env.PORT || 5001)
@@ -34,7 +41,7 @@ app.use(json())
 app.use(cors())
 app.use(urlencoded({extended: false}))
 app.use(express.json())
-//app.use(bodyParser.json())
+const upload = multer({dest: 'uploads/'})
 
 //--conexion
 connectioDB()
@@ -52,13 +59,6 @@ app.use("/api/login", LoginRoutes)
 app.use("/api/users", UsersRoutes)
 //app.use("/api/wallets/listjoin", WalletsRoutes )
 
-//--Join
-const connection1: Connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : '',
-    database : 'bd_invercreditos'
-  });
 
 //--Walltes-Sql
 app.get("/api/wallets/listjoin/:id", async (req: Request, res: Response, any) => {
@@ -72,8 +72,6 @@ app.get("/api/wallets/listjoin/:id", async (req: Request, res: Response, any) =>
         
     }
 } )
-
-
 
 //--Login-Sql
 app.get("/api/loans/listjoin", async (req: Request, res: Response, any) => {
@@ -113,4 +111,19 @@ app.get("/api/login/login/:username,:password", async (req: Request, res: Respon
         
     }
 } )
+
+//--Save-1-Pdf
+app.post("/api/clients/savePdf",upload.single('IMG_0421') , async (req: Request , res: Response , any) => {
+    console.log(req.file)
+    savePdf(req.file)
+    res.send('End')
+})
+
+//--Save-several-Pdf
+app.post("/api/clients/savePdfs",upload.array('IMG_0421', 10) , (req: any , res: Response , any) => {
+    req.files.map(savePdf)
+    res.send('End')
+})
+
+
 export default app;
